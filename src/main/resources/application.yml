@@ -41,11 +41,9 @@ spring:
   config:
     activate:
       on-profile: default
-
 server:
   port: 8080
   shutdown: graceful
-
 management:
   endpoints:
     web:
@@ -62,9 +60,30 @@ management:
   endpoint:
     health:
       show-details: always
-
----
-spring:
-  config:
-    activate:
-      on-profile: local
+      group:
+        liveness:
+          include:
+            - livenessState
+            - diskSpace
+            - ping
+            - db
+            - circuitBreakers
+            - httpEndpointsHealthCheck
+          show-details: always
+        readiness:
+          include:
+            - readinessState
+            - diskSpace
+            - db
+            - circuitBreakers
+            - httpEndpointsHealthCheck
+          show-details: always
+  health:
+    livenessState:
+      enabled: true
+    readinessState:
+      enabled: true
+    refresh:
+      enabled: false
+    circuitBreakers:
+      enabled: true
