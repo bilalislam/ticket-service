@@ -44,3 +44,34 @@ spring:
 server:
   port: 8080
   shutdown: graceful
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show_details: always
+      group:
+        liveness:
+          include:
+            - livenessState
+            - diskSpace
+            - ping
+            - db
+          show-details: always
+        readiness:
+          include:
+            - readinessState
+            - diskSpace
+            - db
+          show-details: always
+  health:
+    livenessState:
+      enabled: true
+    readinessState:
+      enabled: true
+    refresh:
+      enabled: false
+    circuitBreakers:
+      enabled: true
