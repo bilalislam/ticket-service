@@ -347,3 +347,14 @@
     </build>
 
 </project>
+
+
+<management>
+    <endpoints>
+        <web>
+            <exposure>
+                <include>*</include>
+            </exposure>
+        </web>
+    </endpoints>
+</management>
