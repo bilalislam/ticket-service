@@ -44,6 +44,12 @@ spring:
 server:
   port: 8080
   shutdown: graceful
+sms-service:
+  url: "test-service-1"
+onehub-meta-service:
+  url: "test-service-2"
+state-activity-service:
+  url: "test-service-3"
 management:
   endpoints:
     web:
